@@ -108,9 +108,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'evcharger',   # Name of your database
-        'USER': 'admin',   # Your MySQL username (given as 'user admin' in your description)
-        'PASSWORD': 'admin',   # Your MySQL password (given as 'password admin' in your description)
-        'HOST': 'localhost',   # Your MySQL host. If your database is on the same machine, leave as 'localhost'
+        # Your MySQL username (given as 'user admin' in your description)
+        'USER': 'admin',
+        # Your MySQL password (given as 'password admin' in your description)
+        'PASSWORD': 'admin',
+        # Your MySQL host. If your database is on the same machine, leave as 'localhost'
+        'HOST': 'localhost',
         'PORT': '3306',   # Default MySQL port
     }
 }
@@ -166,6 +169,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-
+AUTH_USER_MODEL = "evcharge.UserProfile"
