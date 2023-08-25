@@ -11,4 +11,4 @@ class Address(models.Model):
 
 
 class UserProfile(AbstractUser):
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
