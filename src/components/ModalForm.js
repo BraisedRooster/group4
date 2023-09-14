@@ -70,7 +70,7 @@ function ModalForm(props) {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={props.submit}>
             Submit
           </Button>
         </Form.Item>

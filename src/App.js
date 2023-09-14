@@ -10,8 +10,35 @@ import ModalForm from "./components/ModalForm";
 import rightImg1 from "./rightimg-1.png";
 import rightImg2 from "./rightimg-2.png";
 import rightImg3 from "./righting-3.png";
+import ButtonAppBar from "./components-2/ButtonAppBar";
+import Transaction from "./components-2/Transaction";
+import AdminPage from "./components-admin/AdminPage";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
 
 function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/mapPage" element={<MapPage />} />
+          <Route path="/transcationPage" element={<TranscationPage />} />
+          <Route path="/AdminPage" element={<Adminpage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+function MainPage() {
+  const navigate = useNavigate();
   const [showDialog, setShowDialog] = useState(false);
 
   const showDialogEvent = () => {
@@ -21,7 +48,6 @@ function App() {
   const closeDialogEvent = () => {
     setShowDialog(false);
   };
-
   return (
     <div className="App">
       <AppHeader change={showDialogEvent}></AppHeader>
@@ -55,9 +81,31 @@ function App() {
       <LowCarbonBlock />
       <AdvantageBlock />
       <AppBottom />
-      <ModalForm showDialog={showDialog} closeEvent={closeDialogEvent} />
+      <ModalForm
+        showDialog={showDialog}
+        closeEvent={closeDialogEvent}
+        submit={() => navigate("/MapPage")}
+      />
     </div>
   );
+}
+
+function MapPage() {
+  const navigate = useNavigate();
+  return (
+    <ButtonAppBar
+      transactionpage={() => navigate("/TranscationPage")}
+      adminpage={() => navigate("/Adminpage")}
+    />
+  );
+}
+
+function TranscationPage() {
+  return <Transaction />;
+}
+
+function Adminpage() {
+  return <AdminPage />;
 }
 
 export default App;
