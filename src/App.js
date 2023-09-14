@@ -1,72 +1,63 @@
-import './App.css';
+import "./App.css";
 import AppHeader from "./components/app_header";
-import AlterImage from "./components/app_part1";
-import React, {Component, useState} from "react";
-import JoinUsBlock from "./components/app_part2";
-import LowCarbonBlock from "./components/app_part3";
-import AdvantageBlock from "./components/app_part4";
+import AlterImage from "./components/AlterImage";
+import React, { useState } from "react";
+import JoinUsBlock from "./components/JoinUsBlock";
+import LowCarbonBlock from "./components/LowCarbonBlock";
+import AdvantageBlock from "./components/AdvantageBlock";
 import AppBottom from "./components/app-bottom";
 import ModalForm from "./components/ModalForm";
+import rightImg1 from "./rightimg-1.png";
+import rightImg2 from "./rightimg-2.png";
+import rightImg3 from "./righting-3.png";
 
-class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            showDialog: false
-        }
-    }
+function App() {
+  const [showDialog, setShowDialog] = useState(false);
 
-    showDialogEvent = () => {
-        this.setState({
-            showDialog: true
-        })
-    }
+  const showDialogEvent = () => {
+    setShowDialog(true);
+  };
 
-    closeDialogEvent = () => {
-        this.setState({
-            showDialog: false
-        })
-    }
+  const closeDialogEvent = () => {
+    setShowDialog(false);
+  };
 
-    render() {
-        return (
-            <div className="App">
-                <AppHeader change={this.showDialogEvent.bind(this)}></AppHeader>
-                <div className={'img-block'}>
-                    <div>
-                        <AlterImage leftImage="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                    rightImage="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                    btnText="Download"
-                                    btnShow={true}
-                        ></AlterImage>
-                    </div>
-                    <div>
-                        <AlterImage leftImage="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                    rightImage="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                    btnText={'See More Details'}
-                                    btnShow={true}
-                        ></AlterImage>
-                    </div>
-                    <div>
-                        <AlterImage leftImage="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                    rightImage="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                                    btnText="Contact Now"
-                                    btnShow={true}
-                        ></AlterImage>
-                    </div>
-                </div>
-                <JoinUsBlock></JoinUsBlock>
-                <LowCarbonBlock></LowCarbonBlock>
-                <AdvantageBlock></AdvantageBlock>
-                <AppBottom></AppBottom>
-                <ModalForm showDialog={this.state.showDialog}
-                           closeEvent={this.closeDialogEvent.bind(this)}
-                >
-
-                </ModalForm>
-            </div>
-        );
-    }
+  return (
+    <div className="App">
+      <AppHeader change={showDialogEvent}></AppHeader>
+      <div className={"img-block"}>
+        <div>
+          <AlterImage
+            leftImage={rightImg1}
+            rightImage={rightImg1}
+            btnText="Show on Map"
+            btnShow={true}
+          />
+        </div>
+        <div>
+          <AlterImage
+            leftImage={rightImg2}
+            rightImage={rightImg2}
+            btnText={"See More Details"}
+            btnShow={true}
+          />
+        </div>
+        <div>
+          <AlterImage
+            leftImage={rightImg3}
+            rightImage={rightImg3}
+            btnText="Contact Now"
+            btnShow={true}
+          />
+        </div>
+      </div>
+      <JoinUsBlock />
+      <LowCarbonBlock />
+      <AdvantageBlock />
+      <AppBottom />
+      <ModalForm showDialog={showDialog} closeEvent={closeDialogEvent} />
+    </div>
+  );
 }
 
 export default App;

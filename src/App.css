@@ -1,7 +1,10 @@
 .App{
-  transform: scale(0.9);
-  transform-origin: top;
+  max-width: 2400px; /* 你可以根据需要调整这个宽度 */
+    margin: 0 auto;    /* 这将在左右两侧自动添加空白 */
+    background-color: #D9D9D9;
+    ;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -23,6 +26,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
