@@ -16,12 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt import views as jwt_views
 from evcharge import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/hello/', views.hello_world, name='hello_world'),
     path('api/login/', views.login_view, name='login_view'),
-    path('api/logout/', views.logout_view, name='logout_view'),  # This needs to be added to your views.py
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(),
+         name='token_obtain_pair'),
+    path('api/token/refresh', jwt_views.TokenRefreshView.as_view(),
+         name='token_refresh'),
+    path('api/logout/', views.logout_view, name='logout_view'),
     path('api/register/', views.register, name='register'),
 ]
