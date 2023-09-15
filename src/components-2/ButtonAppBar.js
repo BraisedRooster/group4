@@ -13,8 +13,13 @@ import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import { deepOrange } from "@mui/material/colors";
 import { useState } from "react";
+import MyCharger from "./MyCharger";
 
-export default function ButtonAppBar({ transactionpage, adminpage }) {
+export default function ButtonAppBar({
+  transactionpage,
+  adminpage,
+  myChargers,
+}) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <>
@@ -86,7 +91,12 @@ export default function ButtonAppBar({ transactionpage, adminpage }) {
             </ListItem>
 
             <ListItem disablePadding>
-              <Button fullWidth variant="outlined" style={{ marginBottom: 30 }}>
+              <Button
+                fullWidth
+                variant="outlined"
+                style={{ marginBottom: 30 }}
+                onClick={myChargers}
+              >
                 My Charger
               </Button>
             </ListItem>

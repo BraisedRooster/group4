@@ -12,6 +12,7 @@ import rightImg2 from "./rightimg-2.png";
 import rightImg3 from "./righting-3.png";
 import ButtonAppBar from "./components-2/ButtonAppBar";
 import Transaction from "./components-2/Transaction";
+import MyCharger from "./components-2/MyCharger";
 import AdminPage from "./components-admin/AdminPage";
 import {
   BrowserRouter as Router,
@@ -21,6 +22,8 @@ import {
   Outlet,
   useNavigate,
 } from "react-router-dom";
+import HelpModel from "./components-2/HelpModel";
+import AddChargerModel from "./components-2/AddChargerModel";
 
 function App() {
   return (
@@ -30,6 +33,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/mapPage" element={<MapPage />} />
           <Route path="/transcationPage" element={<TranscationPage />} />
+          <Route path="/myCharger" element={<MyChargerPage />} />
           <Route path="/AdminPage" element={<Adminpage />} />
         </Routes>
       </div>
@@ -96,12 +100,45 @@ function MapPage() {
     <ButtonAppBar
       transactionpage={() => navigate("/TranscationPage")}
       adminpage={() => navigate("/Adminpage")}
+      myChargers={() => navigate("/myCharger")}
     />
   );
 }
 
+function MyChargerPage() {
+  const [showDialog, setShowDialog] = useState(false);
+
+  const showDialogEvent = () => {
+    setShowDialog(true);
+  };
+
+  const closeDialogEvent = () => {
+    setShowDialog(false);
+  };
+  return (
+    <div>
+      <MyCharger change={showDialogEvent} />
+      <AddChargerModel showDialog={showDialog} closeEvent={closeDialogEvent} />
+    </div>
+  );
+}
+
 function TranscationPage() {
-  return <Transaction />;
+  const [showDialog, setShowDialog] = useState(false);
+
+  const showDialogEvent = () => {
+    setShowDialog(true);
+  };
+
+  const closeDialogEvent = () => {
+    setShowDialog(false);
+  };
+  return (
+    <div>
+      <Transaction change={showDialogEvent} />
+      <HelpModel showDialog={showDialog} closeEvent={closeDialogEvent} />
+    </div>
+  );
 }
 
 function Adminpage() {

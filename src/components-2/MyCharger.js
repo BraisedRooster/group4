@@ -15,31 +15,34 @@ import ButtonAppBar from "./ButtonAppBar";
 import "./Transaction.css";
 import { useState, useEffect } from "react";
 
-const transactions = [
+const chargers = [
   {
     id: 1,
+    chargerName: "XXXXX",
     position: "Auguest 1 Street",
-    Time: "1 Hours",
+    Brand: "Tesla",
+    power: "220V",
     Price: "$10",
-    Date: "01/09/2023",
   },
   {
     id: 2,
+    chargerName: "XXXXX",
     position: "Auguest 2 Street",
-    Time: "2 Hours",
+    Brand: "Xiaopeng",
+    power: "110V",
     Price: "$20",
-    Date: "02/09/2023",
   },
   {
     id: 3,
+    chargerName: "XXXXX",
     position: "Auguest 3 Street",
-    Time: "3 Hours",
+    Brand: "Weilai",
+    power: "220V",
     Price: "$30",
-    Date: "03/09/2023",
   },
 ];
 
-const Transaction = (props) => {
+const MyCharger = (props) => {
   const [titleOpacity, setTitleOpacity] = useState(0);
 
   useEffect(() => {
@@ -66,22 +69,22 @@ const Transaction = (props) => {
               opacity: titleOpacity,
             }}
           >
-            XXX's Transaction History
+            XXX's Charger
           </Typography>
-
+          <Button onClick={props.change}>Register a new Charger</Button>
           <List>
-            {transactions.map((transaction, index) => (
-              <div key={transaction.id}>
+            {chargers.map((charger, index) => (
+              <div key={charger.id}>
                 <ListItem>
                   <ListItemText
-                    primary={`${transaction.position} - ${transaction.Date}`}
-                    secondary={`${transaction.Time} - ${transaction.Price}`}
+                    primary={`${charger.chargerName} - Price:${charger.Price} :  ${charger.position} `}
+                    secondary={`${charger.Brand} -- ${charger.power}`}
                   />
-                  <Button style={{ marginLeft: "auto" }} onClick={props.change}>
-                    Need Help With Transaction
+                  <Button style={{ marginLeft: "auto" }}>
+                    Modify Chrager Information
                   </Button>
                 </ListItem>
-                {index !== transactions.length - 1 && <Divider />}
+                {index !== chargers.length - 1 && <Divider />}
               </div>
             ))}
           </List>
@@ -91,4 +94,4 @@ const Transaction = (props) => {
   );
 };
 
-export default Transaction;
+export default MyCharger;
