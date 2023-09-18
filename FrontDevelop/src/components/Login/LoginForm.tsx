@@ -29,7 +29,7 @@ const LoginForm: React.FC = () => {
         <div className="container">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">Email address:</label>
                 <input type="text" id="username" name="username" required />
                 <label htmlFor="password">Password:</label>
                 <input type="password" id="password" name="password" required />
@@ -38,6 +38,11 @@ const LoginForm: React.FC = () => {
             <div className="register-link">
                 <p>Don't have an account? <Link to="/register">Register here</Link></p>
             </div>
+            <div className="retrieve-link">
+                <p>Forgot password? <Link to="/retrieve">Retrieve password</Link></p>
+            </div>
+
+
         </div>
     );
 };

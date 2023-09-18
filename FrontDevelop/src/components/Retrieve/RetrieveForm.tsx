@@ -2,8 +2,9 @@ import React from 'react';
 import { FormEvent } from 'react';
 import '../../styles/LoginReg.css';
 import { register } from '../../services/auth';
+import {Link} from "react-router-dom";
 
-const RegisterForm: React.FC = () => {
+const RetrieveForm: React.FC = () => {
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
         const target = event.target as typeof event.target & {
@@ -21,16 +22,18 @@ const RegisterForm: React.FC = () => {
 
     return (
         <div className="container">
-            <h2>Register</h2>
+            <h2>Retrieve</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">Email address:</label>
                 <input type="text" id="username" name="username" required />
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" required />
-                <input type="submit" value="Register" />
+                <input type="submit" value="Retrieve" />
             </form>
+
+            <div className="login-link">
+                <p>Remembered your password?  <Link to="/login">Login here</Link></p>
+            </div>
         </div>
     );
 };
 
-export default RegisterForm;
+export default RetrieveForm;

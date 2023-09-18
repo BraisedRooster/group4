@@ -1,6 +1,7 @@
 import "./App.css";
 import LoginForm  from "./components/Login/LoginForm";
 import RegisterForm from "./components/Register/RegisterForm";
+import RetrieveForm from "./components/Retrieve/RetrieveForm";
 import AppHeader from "./components/CoverPage/app_header";
 import AlterImage from "./components/CoverPage/AlterImage";
 import React, { useState } from "react";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/AdminPage" element={<Adminpage />} />
           <Route path="/login/" element={<LoginForm />} />
           <Route path="/register/" element={<RegisterForm />} />
+          <Route path="/retrieve/" element={<RetrieveForm />} />
         </Routes>
       </div>
     </Router>
