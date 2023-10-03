@@ -16,17 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt import views as jwt_views
-from evcharge import views
+from rest_framework import permissions
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_schema_view(
+    openapi.Info(title='EVCharger APIs', default_version='v1'),
+    public=True,
+    permission_classes=(permissions.AllowAny,)
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/hello/', views.hello_world, name='hello_world'),
-    path('api/login/', views.login_view, name='login_view'),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(),
-         name='token_obtain_pair'),
-    path('api/token/refresh', jwt_views.TokenRefreshView.as_view(),
-         name='token_refresh'),
-    path('api/logout/', views.logout_view, name='logout_view'),
-    path('api/register/', views.register, name='register'),
+    path('user/', include('users.urls')),
+    path('charger/', include('charger.urls')),
+    path('docs/', schema_view.with_ui('swagger',
+         cache_timeout=0), name='schema-swagger-ui')
 ]

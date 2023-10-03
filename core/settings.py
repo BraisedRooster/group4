@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_swagger',
+    'django_filters',
+    'drf_yasg',
     'corsheaders',
-    'evcharge'
+    'users',
+    'charger'
 ]
 
 MIDDLEWARE = [
@@ -84,22 +88,31 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'ROTATE_REFRESH_TOKENS': False,
+    'ROTATE_REFRESH_TOKENS': True,
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
     'VERIFYING_KEY': None,
     'AUTH_HEADER_TYPES': ('Bearer',),
     'USER_ID_FIELD': 'id',
     'USER_ID_CLAIM': 'user_id',
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'TOKEN_BACKEND': 'rest_framework_simplejwt.token_blacklist.backends.BlacklistBackend',
+    'BLACKLIST_TOKEN_CHECKS': [
+        'rest_framework_simplejwt.token_blacklist.check_blacklisted_token',
+    ],
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -117,6 +130,15 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '3306',   # Default MySQL port
     }
+}
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
 }
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -170,4 +192,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "evcharge.UserProfile"
+AUTH_USER_MODEL = "users.UserProfile"
