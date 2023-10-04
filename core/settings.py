@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'corsheaders',
+    'django_s3_storage',
     'users',
     'charger'
 ]
@@ -140,34 +141,6 @@ SWAGGER_SETTINGS = {
         }
     },
 }
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
-# AUTH_PASSWORD_VALIDATORS = [
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-#     },
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
-# ]
 
 
 # Internationalization
@@ -193,3 +166,64 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "users.UserProfile"
+
+# The AWS region to connect to.
+AWS_REGION = "us-east-1"
+
+# The AWS access key to use.
+AWS_ACCESS_KEY_ID = "ASIA5BJCD236LVCVPUVK"
+
+# The AWS secret access key to use.
+AWS_SECRET_ACCESS_KEY = "FBm6D41RlqV0jVjqC5zHJAIcY/f8uPbIiIV3xijc"
+
+# The optional AWS session token to use.
+AWS_SESSION_TOKEN = "FwoGZXIvYXdzEEEaDHF3HwcU2J3gv/za5CLLAYOnrcB7BABSWbhbwaJCSOYuljw17EA/sVexmftVXIyE3O3GaiSMTGunhJXYgo7X9/GlBF5cmrhONHTtKAkK2VJiegYTcxXAByURSeInsHnzOWyij+Gd5AfX0ABKbJVhuBVES2yLg3VjZnxAkN4THeUmcU0Xfz/fV2XoTFVkA+CF8oPBH94dkWOG8VsQXd4uRbTUjYl4x/IwT7XqAxB/fhyXc5QQNYrmRBTfKsOQFwYMtyURIsl8RN/uvz+UAQgrSRf0kTzxqXXiW/yFKIK/8qgGMi0BMMb9LWzAiz7NGDlPQOvm1sqjOFyWmnkuseu/uDQCRREH8btPQdKoDyQslUc="
+
+# The name of the bucket to store files in.
+AWS_S3_BUCKET_NAME = "evcharger-bucket"
+
+# How to construct S3 URLs ("auto", "path", "virtual").
+AWS_S3_ADDRESSING_STYLE = "auto"
+
+# The full URL to the S3 endpoint. Leave blank to use the default region URL.
+AWS_S3_ENDPOINT_URL = ""
+
+# A prefix to be applied to every stored file. This will be joined to every filename using the "/" separator.
+AWS_S3_KEY_PREFIX = ""
+
+# Whether to enable authentication for stored files. If True, then generated URLs will include an authentication
+# token valid for `AWS_S3_MAX_AGE_SECONDS`. If False, then generated URLs will not include an authentication token,
+# and their permissions will be set to "public-read".
+AWS_S3_BUCKET_AUTH = True
+
+# How long generated URLs are valid for. This affects the expiry of authentication tokens if `AWS_S3_BUCKET_AUTH`
+# is True. It also affects the "Cache-Control" header of the files.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_MAX_AGE_SECONDS = 60 * 60  # 1 hours.
+
+# If True, then files will be stored with reduced redundancy. Check the S3 documentation and make sure you
+# understand the consequences before enabling.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_REDUCED_REDUNDANCY = False
+
+# If True, then text files will be stored using gzip content encoding. Files will only be gzipped if their
+# compressed size is smaller than their uncompressed size.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_GZIP = True
+
+# The signature version to use for S3 requests.
+AWS_S3_SIGNATURE_VERSION = None
+
+# If True, then files with the same name will overwrite each other. By default it's set to False to have
+# extra characters appended.
+AWS_S3_FILE_OVERWRITE = False
+
+# If True, use default behaviour for boto3 of using threads when doing S3 operations. If gevent or similar
+# is used it must be disabled
+AWS_S3_USE_THREADS = True
+
+# Max pool of connections for massive S3 interactions
+AWS_S3_MAX_POOL_CONNECTIONS = 10
+
+# Time to raise timeout when submitting a new file
+AWS_S3_CONNECT_TIMEOUT = 60

@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status, filters
+from rest_framework import viewsets, status, parsers
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import action
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -15,6 +15,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
+    # parser_classes = [parsers.MultiPartParser]
 
     def get_permissions(self):
         if self.action in ['update', 'partial_update', 'destroy']:
