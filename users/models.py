@@ -8,7 +8,7 @@ class Role(models.Model):
 
 
 class Address(models.Model):
-    street_address = models.CharField(max_length=20)
+    street_address = models.CharField(max_length=50)
     lat = models.DecimalField(decimal_places=5, max_digits=10, null=True)
     lng = models.DecimalField(decimal_places=5, max_digits=10, null=True)
     suburb = models.CharField(max_length=20)

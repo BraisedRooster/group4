@@ -171,13 +171,13 @@ AUTH_USER_MODEL = "users.UserProfile"
 AWS_REGION = "us-east-1"
 
 # The AWS access key to use.
-AWS_ACCESS_KEY_ID = "ASIA5BJCD236LVCVPUVK"
+AWS_ACCESS_KEY_ID = "ASIA5BJCD236DBRKBITG"
 
 # The AWS secret access key to use.
-AWS_SECRET_ACCESS_KEY = "FBm6D41RlqV0jVjqC5zHJAIcY/f8uPbIiIV3xijc"
+AWS_SECRET_ACCESS_KEY = "Sib+P6diDnFL2QJ1F2Ls3ILAfbEBlfr4Wp47HSD7"
 
 # The optional AWS session token to use.
-AWS_SESSION_TOKEN = "FwoGZXIvYXdzEEEaDHF3HwcU2J3gv/za5CLLAYOnrcB7BABSWbhbwaJCSOYuljw17EA/sVexmftVXIyE3O3GaiSMTGunhJXYgo7X9/GlBF5cmrhONHTtKAkK2VJiegYTcxXAByURSeInsHnzOWyij+Gd5AfX0ABKbJVhuBVES2yLg3VjZnxAkN4THeUmcU0Xfz/fV2XoTFVkA+CF8oPBH94dkWOG8VsQXd4uRbTUjYl4x/IwT7XqAxB/fhyXc5QQNYrmRBTfKsOQFwYMtyURIsl8RN/uvz+UAQgrSRf0kTzxqXXiW/yFKIK/8qgGMi0BMMb9LWzAiz7NGDlPQOvm1sqjOFyWmnkuseu/uDQCRREH8btPQdKoDyQslUc="
+AWS_SESSION_TOKEN = "FwoGZXIvYXdzEHcaDMntRIMvNDyMugScWSLLAfesBGt35LvKrVUQqJw7kCwXV41NUPQLjC4sE22xRV2omQLqqJtm9jyAhptePN7HjTEx8fiOISsEWDKQ7FmEJsMbn8BgGpUG7aioOtRL+riO7jMU6j+UsLxAABDYTDwHvGdCQRkXBKhI/fBRii0wR+41VvyypEeksnlpANwjNCSAB4bDvfWEmDtS2YRZ4Dr9VSkjURwzOyoje5qyAxpj2eCy/MClv2wBppdc9y4qkqhg8rGSTqRCcHga7gNg8nuVGGmgyifz/tZHe+JcKPez/qgGMi2kmvU5hD7x6ZvyPPSCscXrX/smjNGsr9smISpIueiegLEAD5Vn5C6MyO24IxU="
 
 # The name of the bucket to store files in.
 AWS_S3_BUCKET_NAME = "evcharger-bucket"
@@ -201,10 +201,38 @@ AWS_S3_BUCKET_AUTH = True
 # Important: Changing this setting will not affect existing files.
 AWS_S3_MAX_AGE_SECONDS = 60 * 60  # 1 hours.
 
+# A URL prefix to be used for generated URLs. This is useful if your bucket is served through a CDN.
+AWS_S3_PUBLIC_URL = ""
+
 # If True, then files will be stored with reduced redundancy. Check the S3 documentation and make sure you
 # understand the consequences before enabling.
 # Important: Changing this setting will not affect existing files.
 AWS_S3_REDUCED_REDUNDANCY = False
+
+# The Content-Disposition header used when the file is downloaded. This can be a string, or a function taking a
+# single `name` argument.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_CONTENT_DISPOSITION = ""
+
+# The Content-Language header used when the file is downloaded. This can be a string, or a function taking a
+# single `name` argument.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_CONTENT_LANGUAGE = ""
+
+# A mapping of custom metadata for each file. Each value can be a string, or a function taking a
+# single `name` argument.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_METADATA = {}
+
+# If True, then files will be stored using AES256 server-side encryption.
+# If this is a string value (e.g., "aws:kms"), that encryption type will be used.
+# Otherwise, server-side encryption is not be enabled.
+# Important: Changing this setting will not affect existing files.
+AWS_S3_ENCRYPT_KEY = False
+
+# The AWS S3 KMS encryption key ID (the `SSEKMSKeyId` parameter) is set from this string if present.
+# This is only relevant if AWS S3 KMS server-side encryption is enabled (above).
+AWS_S3_KMS_ENCRYPTION_KEY_ID = ""
 
 # If True, then text files will be stored using gzip content encoding. Files will only be gzipped if their
 # compressed size is smaller than their uncompressed size.
