@@ -29,7 +29,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('users.urls')),
+    path('user/', include(('users.urls', 'users'), namespace='users')),
     path('charger/', include('charger.urls')),
     path('charger-activity/', include('charger_activity.urls')),
     path('docs/', schema_view.with_ui('swagger',

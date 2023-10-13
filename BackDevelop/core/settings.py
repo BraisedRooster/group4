@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_swagger',
+    'django_rest_passwordreset',
     'django_filters',
     'drf_yasg',
     'corsheaders',
@@ -70,6 +72,8 @@ MIDDLEWARE = [
 
 
 ROOT_URLCONF = 'core.urls'
+
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
 TEMPLATES = [
     {
@@ -150,6 +154,16 @@ SWAGGER_SETTINGS = {
     },
 }
 
+# For password reset purpose
+# DJANGO_REST_LOOKUP_FIELD = 'email'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'fakeme1729@yahoo.com'
+EMAIL_HOST_PASSWORD = ''
+# HTTP_USER_AGENT_HEADER = 'HTTP_USER_AGENT'
+# DJANGO_REST_PASSWORDRESET_IP_ADDRESS_HEADER = 'HTTP_X_FORWARDED_FOR'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

@@ -6,6 +6,13 @@ from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 
+from django.core.mail import EmailMultiAlternatives
+from django.dispatch import receiver
+from django.template.loader import render_to_string
+from django.urls import reverse
+from django_rest_passwordreset.signals import reset_password_token_created
+
+
 from .swagger_schema import SwaggerLoginSchema
 from .models import UserProfile
 from .serializers import UserSerializer
@@ -84,3 +91,23 @@ class AuthViewSet(viewsets.GenericViewSet):
                 return Response({'message': 'Invalid token or token has already expired'}, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response({'message': 'Refresh token is required'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+@receiver(reset_password_token_created)
+def password_reset_token_created(sender, instance, reset_password_token, *args, **kwargs):
+    context  = {
+        'current_user': reset_password_token.user,
+        # 'username': reset_password_token.username,
+        'email': reset_password_token.user.email,
+        'reset_password_url': "{}?token={}".format(instance.request.build_absolute_uri(reverse('users:passwordreset_confirm')),
+        reset_password_token.key)
+    }
+    email_html_message = render_to_string('password_reset.html', context)
+    msg = EmailMultiAlternatives(
+        'Password Reset',
+        email_html_message,
+        'noreply@email.com',
+        [reset_password_token.user.email]
+    )
+    msg.attach_alternative(email_html_message, 'text/html')
+    msg.send()
