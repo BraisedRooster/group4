@@ -1,0 +1,11 @@
+
+Ytypescript:S1854"6Remove this useless assignment to variable "lastname".(©´¬û8è©Ö÷±1
+_typescript:S1854"7Remove this useless assignment to variable "firstname".(Ï­’ˆøÿÿÿÿ8è©Ö÷±1
+Utypescript:S1854"3Remove this useless assignment to variable "email".(Åz8é©Ö÷±1
+gtypescript:S1854""DRemove this useless assignment to variable "enteredConfirmPassword".(çàĞœ8é©Ö÷±1
+Ztypescript:S1854#"2Remove this useless assignment to variable "city".(´Úæğşÿÿÿÿ8ê©Ö÷±1
+\typescript:S1854$"4Remove this useless assignment to variable "suburb".(ë¦¤„ûÿÿÿÿ8ê©Ö÷±1
+Ytypescript:S1854%"6Remove this useless assignment to variable "postcode".(ŠÊüÆ8ë©Ö÷±1
+]typescript:S1854&"5Remove this useless assignment to variable "address".(‡ã³—úÿÿÿÿ8ë©Ö÷±1
+ştypescript:S6478K"ÕDo not define components during render. React will see a new component type on every render and destroy the entire subtreeâ€™s DOM nodes and state. Instead, move this component definition out of the parent component â€œRegisterFormâ€ and pass data as props. If you want to allow component creation in props, set allowAsProps option to true.(Û…½ëùÿÿÿÿ8ë©Ö÷±1
+ştypescript:S6478["ÕDo not define components during render. React will see a new component type on every render and destroy the entire subtreeâ€™s DOM nodes and state. Instead, move this component definition out of the parent component â€œRegisterFormâ€ and pass data as props. If you want to allow component creation in props, set allowAsProps option to true.(Û…½ëùÿÿÿÿ8ì©Ö÷±1

@@ -19,6 +19,7 @@ export default function ButtonAppBar({
   transactionpage,
   adminpage,
   myChargers,
+  profile,
 }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
@@ -113,7 +114,7 @@ export default function ButtonAppBar({
             </ListItem>
           </List>
           <Divider style={{ margin: "16px 0" }} />
-          <Button fullWidth variant="contained" color="secondary">
+          <Button fullWidth variant="contained" color="secondary" onClick={profile}>
             Profile
           </Button>
         </div>
