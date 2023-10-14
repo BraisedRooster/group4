@@ -5,16 +5,18 @@ body {
     padding: 0;
 }
 
+
 .container {
     width: 100%;
     max-width: 400px;
-    margin: 50px auto;
+    margin: auto auto;
     padding: 30px;
     background-color: #fff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     text-align: center;
 }
+
 
 input[type="text"],input[type="email"],
 input[type="password"] {
@@ -27,6 +29,7 @@ input[type="password"] {
     text-align: left;
 }
 
+
 input[type="submit"] {
     background-color: #00008B;
     color: white;
@@ -37,6 +40,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+
 input[type="submit"]:hover {
     background-color: #00008B;
 }
@@ -46,17 +50,73 @@ label {
     margin-bottom: 2px;
 }
 
+
 .login-link {
     margin-top: 10px;
     display: inline-block;
 }
+
 
 .register-link {
     margin-top: 10px;
     display: inline-block;
 }
 
+
 .retrieve-link {
     margin-top: 10px;
     display: inline-block;
+}
+
+
+
+
+  .driving-text-container {
+    font-size: 2em;
+    position: relative;
+    display: inline-block;
+}
+
+
+
+
+@keyframes drive {
+    0% {
+        left: 100%;
+        top: 0;
+        transform: translateX(-100%) rotate(0deg);
+      }
+      25% {
+        left: 0%;
+        top: 0%;
+        transform: translateX(-100%) translateY(100%) rotate(90deg);
+      }
+      50% {
+        left: 0;
+        top: 50%;
+        transform: translateY(100%) rotate(180deg);
+      }
+      75% {
+        left: 100;
+        top: 50%;
+        transform: translateY(0) rotate(270deg);
+      }
+      100% {
+        left: 100%;
+        top: 0;
+        transform: translateX(-100%) rotate(360deg);
+      }
+}
+
+
+.driving-text {
+color: rgb(5, 64, 183);
+}
+.driving-animation {
+    animation: drive 5s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 55px;
 }
