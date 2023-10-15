@@ -15,13 +15,14 @@ import { deepOrange } from "@mui/material/colors";
 import { useState, useEffect } from "react";
 import MyCharger from "../MapPage/MyCharger";
 import Joyride, { STATUS } from "react-joyride";
-
+import Profile from "../MapPage/Profile"
 export default function ButtonAppBar({
                                          transactionpage,
                                          adminpage,
                                          myChargers,
                                          showLiveChat,
-                                         toggleLiveChat
+                                         toggleLiveChat,
+                                         profile
                                      }) {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [isDark, setIsDark] = useState(false);
@@ -185,7 +186,7 @@ export default function ButtonAppBar({
                         </ListItem>
                     </List>
                     <Divider style={{ margin: "16px 0" }} />
-                    <Button fullWidth variant="contained" color="secondary">
+                    <Button fullWidth variant="contained" color="secondary" onClick={() => window.open("/ProfilePage", "_blank")}>
                         Profile
                     </Button>
                 </div>

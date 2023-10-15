@@ -19,6 +19,7 @@ import MyCharger from "./components/MapPage/MyCharger";
 import GoogleMapComponent from './components/MapPage/GoogleMapComponent';
 import LiveChat from './components/MapPage/LiveChat';
 import AdminPage from "./components/Admin/AdminPage";
+import ProfilePage from "./components/MapPage/Profile";
 
 import {
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="/transcationPage" element={<TranscationPage />} />
           <Route path="/myCharger" element={<MyChargerPage />} />
           <Route path="/AdminPage" element={<Adminpage />} />
+          <Route path="/ProfilePage" element={<ProfilePage />} />
           <Route path="/login/" element={<LoginForm />} />
           <Route path="/register/" element={<RegisterForm />} />
           <Route path="/retrieve/" element={<RetrieveForm />} />
@@ -222,6 +224,11 @@ function TranscationPage() {
 
 function Adminpage() {
   return <AdminPage />;
+}
+
+function Profile() {
+    const [showDialog, setShowDialog] = useState(false);
+    return <ProfilePage />;
 }
 
 export default App;
