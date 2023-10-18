@@ -138,6 +138,7 @@ function GoogleMapComponent({
             );
           })}
         {selectedCharger && (
+<<<<<<< HEAD
 
             <InfoWindowF
                 position={{
@@ -191,6 +192,49 @@ function GoogleMapComponent({
               </div>
             </InfoWindowF>
 
+=======
+          <InfoWindowF
+            position={{
+              lat: JSON.parse(selectedCharger.address.lat),
+              lng: JSON.parse(selectedCharger.address.lng),
+            }}
+            onCloseClick={() => setSelectedCharger(null)}
+          >
+            <div className="info-container">
+              <h4 className="charger-name">{selectedCharger.name}</h4>
+              <img
+                src={
+                  selectedCharger && selectedCharger.charger_type.image.image
+                }
+                alt={selectedCharger.charger_type.image.name}
+              />
+              <p>
+                <strong>Type:</strong> {selectedCharger.charger_type.name}
+              </p>
+              <p>
+                <strong>Power:</strong> {selectedCharger.charger_type.power}
+              </p>
+              <p>
+                <strong>Port Type:</strong>{" "}
+                {selectedCharger.charger_type.port_type}
+              </p>
+              <p>
+                <strong>Amp:</strong> {selectedCharger.charger_type.amp}
+              </p>
+              <p>
+                <strong>Address:</strong>{" "}
+                {selectedCharger.address.street_address}
+              </p>
+              <p>
+                <strong>Average Rating:</strong>{" "}
+                {(
+                  selectedCharger.number_of_stars /
+                  selectedCharger.number_of_rating
+                ).toFixed(2)}
+              </p>
+            </div>
+          </InfoWindowF>
+>>>>>>> d930428e51c36aafa389bfc4eb1a7d6a1ae42287
         )}
 
       </GoogleMap>
