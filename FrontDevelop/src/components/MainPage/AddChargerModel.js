@@ -12,13 +12,9 @@ function AddChargerModel(props) {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [auth, setAuth] = useState({});
-<<<<<<< HEAD
 
   const [submitting, setSubmitting] = useState(false);
 
-=======
-  const [submitting, setSubmitting] = useState(false);
->>>>>>> d930428e51c36aafa389bfc4eb1a7d6a1ae42287
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("user")));
   }, []);
@@ -78,10 +74,7 @@ function AddChargerModel(props) {
                 setSubmitting(false);
                 navigate("/myCharger");
                 props.closeEvent();
-<<<<<<< HEAD
 
-=======
->>>>>>> d930428e51c36aafa389bfc4eb1a7d6a1ae42287
               })
               .catch((err) => {
                 console.log(err);
