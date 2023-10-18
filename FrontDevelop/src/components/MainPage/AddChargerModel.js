@@ -13,10 +13,13 @@ function AddChargerModel(props) {
   const navigate = useNavigate();
   const [auth, setAuth] = useState({});
 
+  const [submitting, setSubmitting] = useState(false);
+
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("user")));
   }, []);
   const handleOk = () => {
+    setSubmitting(true);
     form.validateFields().then(async (values) => {
       const { image, ...otherValues } = await values; // Destructure to separate image from other values
       let data = null;
@@ -33,7 +36,10 @@ function AddChargerModel(props) {
                 port_type: otherValues.CT, // Assuming you have a form field named 'CT'
                 amp: otherValues.Amp.toString(),
                 warranty: parseInt(otherValues.warranty, 10) || 0, // Default to 0 if undefined
-                image: e.file.thumbUrl,
+                image: {
+                  name: "chargerImage",
+                  image: e.file.thumbUrl,
+                },
               },
 
               address: {
@@ -59,9 +65,16 @@ function AddChargerModel(props) {
                 },
               })
               .then((res) => {
+
                 message.success('Charger added successfully!', 2).then(() => {
                   navigate("/mapPage");// Navigate after the message is shown for 2 seconds
                 });
+
+                console.log("successfully created charger");
+                setSubmitting(false);
+                navigate("/myCharger");
+                props.closeEvent();
+
               })
               .catch((err) => {
                 console.log(err);
@@ -95,31 +108,6 @@ function AddChargerModel(props) {
         initialValues={{ remember: true }}
         autoComplete="off"
       >
-        <Form.Item
-          label="First Name"
-          name="FN"
-          rules={[
-            {
-              required: true,
-              message: "Type first name here",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Last Name: "
-          name="LN"
-          rules={[
-            {
-              required: true,
-              message: "Type last name here",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
         <Button onClick={() => setShowMapOverlay(true)}>
           Find My Location on Map
         </Button>
@@ -286,7 +274,8 @@ function AddChargerModel(props) {
           <GoogleMapComponent
             center={{ lat: -33.8688, lng: 151.2093 }}
             defaultProps={{ zoom: 11 }}
-            onMapClick={(lat, lng) => {
+            onMapClick={(lat, lng, e) => {
+              console.log(e);
               setSelectedLocation({ lat, lng });
               setShowMapOverlay(false);
             }}

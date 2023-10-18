@@ -103,6 +103,7 @@ function GoogleMapComponent({
   ];
 
   const handleMapClick = (e) => {
+    console.log(e);
     if (onMapClick) onMapClick(e.latLng.lat(), e.latLng.lng());
   };
 
@@ -137,6 +138,7 @@ function GoogleMapComponent({
             );
           })}
         {selectedCharger && (
+
             <InfoWindowF
                 position={{
                   lat: JSON.parse(selectedCharger.address.lat),
@@ -188,6 +190,7 @@ function GoogleMapComponent({
                 </div>
               </div>
             </InfoWindowF>
+
         )}
 
       </GoogleMap>
