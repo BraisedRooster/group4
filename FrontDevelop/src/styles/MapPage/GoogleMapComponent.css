@@ -41,13 +41,7 @@
 }
 
 .check-in-btn {
-    width: 100%;
-    padding: 8px;
-    background-color: #4CAF50; /* Green color for check-in button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
     text-align: center;
 }
 

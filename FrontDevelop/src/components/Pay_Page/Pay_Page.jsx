@@ -32,7 +32,7 @@ export function Pay_Page(){
     <>
 
       <Button type="primary" onClick={showModal}>
-        Pay
+        Check in
       </Button>
       <Modal width={500} title = {Order_Address} open={isModalOpen} okText={'Process'} onOk={handleOk} onCancel={handleCancel}>
         <p style={{marginLeft:"10px"}}>Order No.{Order_Number}</p>
