@@ -137,43 +137,59 @@ function GoogleMapComponent({
             );
           })}
         {selectedCharger && (
-          <InfoWindowF
-            position={{
-              lat: JSON.parse(selectedCharger.address.lat),
-              lng: JSON.parse(selectedCharger.address.lng),
-            }}
-            onCloseClick={() => setSelectedCharger(null)}
-          >
-            <div className="info-container">
-              <h4 className="charger-name">{selectedCharger.name}</h4>
-              {/* <img src={selectedCharger}/> */}
-              <p>
-                <strong>Type:</strong> {selectedCharger.charger_type.name}
-              </p>
-              <p>
-                <strong>Power:</strong> {selectedCharger.charger_type.power}
-              </p>
-              <p>
-                <strong>Port Type:</strong>{" "}
-                {selectedCharger.charger_type.port_type}
-              </p>
-              <p>
-                <strong>Amp:</strong> {selectedCharger.charger_type.amp}
-              </p>
-              <p>
-                <strong>Address:</strong>{" "}
-                {selectedCharger.address.street_address}
-              </p>
-              <p>
-                <strong>Average Rating:</strong>{" "}
-                {(
-                  selectedCharger.number_of_stars /
-                  selectedCharger.number_of_rating
-                ).toFixed(2)}
-              </p>
-            </div>
-          </InfoWindowF>
+            <InfoWindowF
+                position={{
+                  lat: JSON.parse(selectedCharger.address.lat),
+                  lng: JSON.parse(selectedCharger.address.lng),
+                }}
+                onCloseClick={() => setSelectedCharger(null)}
+            >
+              <div className="info-container">
+                <div className="top-section">
+                  {/* Placeholder for Image */}
+                  <div className="charger-image"></div>
+
+                  <h4 className="charger-name">{selectedCharger.name}</h4>
+                  <p className="type-power">
+                    <strong>Type:</strong> {selectedCharger.charger_type.name}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>Power:</strong> {selectedCharger.charger_type.power}
+                  </p>
+                  <button className="check-in-btn">Check In</button>
+                </div>
+
+                <div className="details-section">
+                  <div className="detail-item">
+                    <button className="detail-icon">...</button>
+                    <h4>{selectedCharger.name}</h4>
+                  </div>
+                  <div className="detail-item">
+                    <button className="detail-icon">...</button>
+                    <p><strong>Address:</strong> {selectedCharger.address.street_address}</p>
+                  </div>
+                  <div className="detail-item">
+                    <button className="detail-icon">...</button>
+                    <p><strong>Phone:</strong> +61 29693 9000</p>
+                  </div>
+                  <div className="detail-item">
+                    <button className="detail-icon">...</button>
+                    <p>
+                      <strong>Rating:</strong>
+                      {(
+                          selectedCharger.number_of_stars /
+                          selectedCharger.number_of_rating
+                      ).toFixed(2)}
+                    </p>
+                  </div>
+                  <div className="detail-item last-item">
+                    <button className="detail-icon">...</button>
+                    <p>No Free Parking</p>
+                  </div>
+                </div>
+              </div>
+            </InfoWindowF>
         )}
+
       </GoogleMap>
     </div>
   );

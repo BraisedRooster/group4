@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Modal, Upload, Button } from "antd";
+import { Form, Input, Modal, Upload, Button , message } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import GoogleMapComponent from "../MapPage/GoogleMapComponent";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ function AddChargerModel(props) {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [auth, setAuth] = useState({});
+
   useEffect(() => {
     setAuth(JSON.parse(localStorage.getItem("user")));
   }, []);
@@ -58,11 +59,13 @@ function AddChargerModel(props) {
                 },
               })
               .then((res) => {
-                console.log("successfully created charger");
-                navigate("/myCharger");
+                message.success('Charger added successfully!', 2).then(() => {
+                  navigate("/mapPage");// Navigate after the message is shown for 2 seconds
+                });
               })
               .catch((err) => {
                 console.log(err);
+                message.error('Failed to add charger.');
               });
         })
         .catch((errorInfo) => {
