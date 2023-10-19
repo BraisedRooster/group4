@@ -132,9 +132,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'evcharger',   # Name of your database
         # Your MySQL username (given as 'user admin' in your description)
-        'USER': 'admin',
+        'USER': 'root',
         # Your MySQL password (given as 'password admin' in your description)
-        'PASSWORD': 'admin',
+        'PASSWORD': '12345678',
         # Your MySQL host. If your database is on the same machine, leave as 'localhost'
         'HOST': 'localhost',
         'PORT': '3306',   # Default MySQL port
