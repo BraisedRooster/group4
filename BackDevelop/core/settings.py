@@ -56,7 +56,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:3000",
 # ]
-ALLOWED_HOSTS= ['54.82.67.219']
+ALLOWED_HOSTS= ['.localhost','127.0.0.1','[::1]','ec2-3-86-35-105.compute-1.amazonaws.com','54.208.14.232']
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
